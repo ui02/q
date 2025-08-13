@@ -1,0 +1,4 @@
+baseurl: "https://ui02.github.io/q/"
+languageCode: "ja-jp"
+title: "My Site"
+theme: stack
