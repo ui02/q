@@ -1,0 +1,22 @@
+---
+title: GW 2025
+description: 
+slug: 20250501
+date: 2025-05-01
+image: cover.jpg
+categories:
+    - Dailylife
+tags:
+    - 
+weight: 1       # You can add weight to some posts to override the default sorting (date descending)
+---
+
+今年のGWは短い連休だった分、しっかり出かけてしっかり遊んだ。
+
+友達と喋ったり遊んだり、
+
+推し活したりサムギョプサル食べたり。
+
+買い出し行ったり、観葉植物の植え替えしたり、
+
+めちゃうまイタリアン食べたり、雨でラッキーだったり。
