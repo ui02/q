@@ -3,7 +3,7 @@ title: GW 2025
 description: 
 slug: 20250501
 date: 2025-05-01
-image: cover.jpg
+image: IMG_20250426_124208.jpg
 categories:
     - Dailylife
 tags:
