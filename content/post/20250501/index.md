@@ -21,10 +21,10 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 めちゃうまイタリアン食べたり、雨でラッキーだったり。
 <!-- gallery start -->
-![Image 1](IMG_20250506_113722.jpg)
-![Image 2](IMG_20250506_114011.jpg)
-![Image 3](IMG_20250506_122246.jpg)
-![Image 4](IMG_20250506_123827.jpg)
+![](IMG_20250506_113722.jpg)
+![](IMG_20250506_114011.jpg)
+![](IMG_20250506_122246.jpg)
+![](IMG_20250506_123827.jpg)
 <!-- gallery end -->
 
 
