@@ -20,7 +20,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 買い出し行ったり、観葉植物の植え替えしたり、
 
 めちゃうまイタリアン食べたり、雨でラッキーだったり。
-!-- gallery start -->
+<!-- gallery start -->
 ![Image 1](IMG_20250506_113722.jpg)
 ![Image 2](IMG_20250506_114011.jpg)
 ![Image 3](IMG_20250506_122246.jpg)
