@@ -23,6 +23,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 <!-- gallery start -->
 ![](IMG_20250506_113722.jpg)
 ![](IMG_20250506_114011.jpg)
+
 ![](IMG_20250506_122246.jpg)
 ![](IMG_20250506_123827.jpg)
 <!-- gallery end -->
