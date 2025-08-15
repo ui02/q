@@ -6,9 +6,8 @@ date: 2025-08-10
 image: IMG_20250810_142904.jpg
 categories:
     - Dailylife
-    - Lifework
 tags:
-    - 
+    - SHINee
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
