@@ -7,7 +7,7 @@ image: IMG_20250426_124208.jpg
 categories:
     - Dailylife
 tags:
-    - 
+    - SHINee
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
