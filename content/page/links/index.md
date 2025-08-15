@@ -8,7 +8,7 @@ links:
     website: https://ui02.github.io/gallery/
     image:
   - title: PYZ
-    description: ゲームスクショ置き場（Tumblr）。ページが表示されなくなり次第githubへ移行予定。
+    description: ゲームスクショ置き場（生き残りのTumblrブログ。ページが表示されなくなり次第githubへ移行予定）
     website: https://ylpyz.tumblr.com/
     image: 
 menu:
