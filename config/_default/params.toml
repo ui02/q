@@ -2,10 +2,10 @@
 mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
-favicon = "static/favicon.png"
+favicon = "/favicon.png"
 
 [footer]
-since = 2020
+since = 2025
 customText = ""
 
 [dateFormat]
@@ -19,7 +19,7 @@ subtitle = ""
 [sidebar.avatar]
 enabled = true
 local = true
-src = "/avatar.png"
+src = "img/avatar.png"
 
 [article]
 headingAnchor = false
