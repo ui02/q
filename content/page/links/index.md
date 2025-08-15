@@ -13,7 +13,7 @@ links:
     image: 
 menu:
     main: 
-        weight: -50
+        weight: 5
         params:
             icon: link
 
