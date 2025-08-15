@@ -37,7 +37,9 @@ weight: 1       # You can add weight to some posts to override the default sorti
 ![](IMG_20250810_140530.jpg)
 ![](IMG_20250810_142550.jpg)
 
+![](IMG_20250810_141103.jpg)
 ![](IMG_20250810_142717.jpg)
+
 ![](IMG_20250810_142608.jpg)
 <!-- gallery end -->
 
