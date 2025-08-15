@@ -1,7 +1,7 @@
 ---
 title: Info
 description: 
-image: cover.jpg
+image: IMG_5899.JPG
 menu:
     main: 
         weight: 4
