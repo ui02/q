@@ -1,6 +1,6 @@
 # Change baseurl before deploy
 baseurl = "https://ui02.github.io/q/"
-languageCode = "en-us"
+languageCode = "en"
 title = "iolite"
 
 # Theme i18n support
