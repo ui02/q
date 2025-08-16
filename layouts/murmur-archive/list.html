@@ -8,7 +8,10 @@
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := index $months $ym | default (slice) }}
+  {{ $monthPages := index $months $ym }}
+  {{ if not $monthPages }}
+    {{ $monthPages = slice }}
+  {{ end }}
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
@@ -18,7 +21,6 @@
   {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
-      {{/* 複数画像を全て表示 */}}
       {{ with .Resources.Match "images/*" }}
         {{ range . }}
           <img src="{{ .RelPermalink }}" alt="">
