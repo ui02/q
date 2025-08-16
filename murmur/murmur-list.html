@@ -1,0 +1,18 @@
+{{ define "main" }}
+<h1>Murmur</h1>
+{{ $pages := .Pages.ByDate.Reverse }}
+<div class="murmur-list">
+  {{ range $pages }}
+  <div class="murmur-item" style="display:flex; margin-bottom:2em;">
+    {{ with .Resources.ByType "image" | first }}
+    <div class="murmur-img" style="flex:1; max-width:200px; margin-right:1em;">
+      <img src="{{ .RelPermalink }}" style="width:100%; height:auto;">
+    </div>
+    {{ end }}
+    <div class="murmur-text" style="flex:3;">
+      <p>{{ .Content | safeHTML }}</p>
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
