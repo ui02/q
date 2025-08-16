@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <main class="prose dark:prose-invert mx-auto">
+    <h1 class="text-xl font-semibold mb-4">Tweet</h1>
+    <p class="text-sm text-gray-500">
+      {{ .Date.Format "2006-01-02 15:04" }}
+    </p>
+    <div class="mt-4">{{ .Content }}</div>
+  </main>
+{{ end }}
