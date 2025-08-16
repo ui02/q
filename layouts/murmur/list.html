@@ -1,7 +1,9 @@
+
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 
-{{ range (.Paginate (.Pages.ByDate.Reverse)).Pages }}
+{{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+{{ range $paginator.Pages }}
   <div class="card">
     {{ with .Resources.GetMatch "images/*" }}
       <img src="{{ .RelPermalink }}" alt="">
@@ -14,6 +16,11 @@
 {{ end }}
 
 <div class="pagination">
-  {{ template "_internal/pagination.html" . }}
+  {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}">Prev</a>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}">Next</a>
+  {{ end }}
 </div>
 {{ end }}
