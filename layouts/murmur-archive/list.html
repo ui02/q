@@ -1,5 +1,7 @@
 {{ define "main" }}
 
+<h1>{{ .Title }}</h1>
+
 {{ $allPages := .Pages.ByDate.Reverse }}
 
 {{/* 年-月でグループ化 */}}
@@ -14,16 +16,19 @@
 {{/* 月ごとにページネーション */}}
 {{ range $ym, $pages := $months }}
   <h2>{{ $ym }}</h2>
+
   {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
-      <div class="images">
-        {{ range .Resources.Match "images/*" }}
-          <img src="{{ .RelPermalink }}" alt="">
-        {{ end }}
-      </div>
+
+      {{/* 複数画像をすべて表示 */}}
+      {{ range .Resources.Match "images/*" }}
+        <img src="{{ .RelPermalink }}" alt="">
+      {{ end }}
+
       <div class="text">
-        <p>{{ .Content }}</p>
+        {{/* マークダウン本文をHTMLとして表示 */}}
+        {{ .Content | safeHTML }}
         <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
       </div>
     </div>
