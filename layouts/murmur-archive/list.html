@@ -8,11 +8,9 @@
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := index $months $ym }}
-  {{ if not $monthPages }}
-    {{ $monthPages = slice }}
-  {{ end }}
-  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
+  {{ $monthPages := index $months $ym | default (slice) }}
+  {{ $monthPages = $monthPages | append . }}
+  {{ $months = merge $months (dict $ym $monthPages) }}
 {{ end }}
 
 {{/* 月ごとにページネーション */}}
