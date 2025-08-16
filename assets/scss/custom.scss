@@ -18,9 +18,21 @@
 }
 
 .images img {
-  width: 100px;      /* サムネイルサイズ */
-  height: 100px;
+  width: calc(25% - 5px); /* 最大4枚横並び */
+  height: auto;            /* 高さ自動で縦横比維持 */
   object-fit: cover;  /* 縦横比を崩さずトリミング */
   border-radius: 4px;
   border: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+  .images img {
+    width: calc(50% - 5px); /* 画面が小さければ2列に */
+  }
+}
+
+@media (max-width: 400px) {
+  .images img {
+    width: 100%;             /* さらに小さければ1列 */
+  }
 }
