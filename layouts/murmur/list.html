@@ -17,9 +17,11 @@
   {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
-      {{ with .Resources.GetMatch "images/*" }}
-        <img src="{{ .RelPermalink }}" alt="">
-      {{ end }}
+      <div class="images">
+        {{ range .Resources.Match "images/*" }}
+          <img src="{{ .RelPermalink }}" alt="">
+        {{ end }}
+      </div>
       <div class="text">
         <p>{{ .Plain }}</p>
         <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
