@@ -16,3 +16,8 @@ disqusShortname = "sui02"
 
 [pagination]
 pagerSize = 10
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
