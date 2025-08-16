@@ -1,26 +1,41 @@
-
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 
-{{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
-{{ range $paginator.Pages }}
-  <div class="card">
-    {{ with .Resources.GetMatch "images/*" }}
-      <img src="{{ .RelPermalink }}" alt="">
-    {{ end }}
-    <div class="text">
-      <p>{{ .Summary }}</p>
-      <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
+{{ $allPages := .Pages.ByDate.Reverse }}
+
+{{/* 年-月でグループ化 */}}
+{{ $months := dict }}
+{{ range $allPages }}
+  {{ $ym := .Date.Format "2006-01" }}
+  {{ $monthPages := index $months $ym }}
+  {{ $monthPages = cond (isset $months $ym) $monthPages (slice) }}
+  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
+{{ end }}
+
+{{/* 月ごとにページネーション */}}
+{{ range $ym, $pages := $months }}
+  <h2>{{ $ym }}</h2>
+  {{ $paginator := .Paginate $pages }}
+  {{ range $paginator.Pages }}
+    <div class="card">
+      {{ with .Resources.GetMatch "images/*" }}
+        <img src="{{ .RelPermalink }}" alt="">
+      {{ end }}
+      <div class="text">
+        <p>{{ .Summary }}</p>
+        <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
+      </div>
     </div>
+  {{ end }}
+
+  <div class="pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}">Prev</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}">Next</a>
+    {{ end }}
   </div>
 {{ end }}
 
-<div class="pagination">
-  {{ if $paginator.HasPrev }}
-    <a href="{{ $paginator.Prev.URL }}">Prev</a>
-  {{ end }}
-  {{ if $paginator.HasNext }}
-    <a href="{{ $paginator.Next.URL }}">Next</a>
-  {{ end }}
-</div>
 {{ end }}
