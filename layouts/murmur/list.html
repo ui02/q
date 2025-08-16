@@ -1,5 +1,4 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
 
 {{ $allPages := .Pages.ByDate.Reverse }}
 
@@ -15,14 +14,14 @@
 {{/* 月ごとにページネーション */}}
 {{ range $ym, $pages := $months }}
   <h2>{{ $ym }}</h2>
-  {{ $paginator := .Paginate $pages }}
+  {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
       {{ with .Resources.GetMatch "images/*" }}
         <img src="{{ .RelPermalink }}" alt="">
       {{ end }}
       <div class="text">
-        <p>{{ .Content }}</p>
+        <p>{{ .Plain }}</p>
         <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
       </div>
     </div>
