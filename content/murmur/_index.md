@@ -1,0 +1,19 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+{{ range .Paginator.Pages }}
+  <div class="card">
+    {{ with .Resources.GetMatch "images/*" }}
+      <img src="{{ .RelPermalink }}" alt="">
+    {{ end }}
+    <div class="text">
+      <p>{{ .Summary }}</p>
+      <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
+    </div>
+  </div>
+{{ end }}
+
+<div class="pagination">
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}
