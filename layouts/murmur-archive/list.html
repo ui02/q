@@ -12,8 +12,7 @@
   {{ $ym := .Date.Format "2006-01" }}
   {{ $monthPages := slice }}
   {{ if isset $months $ym }}
-    {{ $monthPages = (index $months $ym) }}
-    {{/* index の値が単体のページになっていた場合は slice に変換 */}}
+    {{ $monthPages = index $months $ym }}
     {{ if not (kindIs "slice" $monthPages) }}
       {{ $monthPages = slice $monthPages }}
     {{ end }}
