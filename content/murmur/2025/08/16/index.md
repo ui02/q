@@ -1,8 +1,10 @@
 ---
 title: "2025-08-16"
 date: 2025-08-16T04:49:04+00:00
-type: "murmur-archive"
+type: "post"          # ← これを post に揃えると post のテンプレートが使える
 draft: false
+tags: 
+categories: 
 ---
 
 スパショのライビュ落ちたが‥
