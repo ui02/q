@@ -14,12 +14,11 @@
   
   {{ if isset $months $ym }}
     {{ $existing := index $months $ym }}
-    {{ $monthPages = slice }}
-    {{ range $existing }}
+    {{ $monthPages = slice }}　<!-- 初期化 -->
+    {{ range $existing }}　<!-- 既存ページがあれば順に追加 -->
       {{ $monthPages = append $monthPages . }}
     {{ end }}
   {{ end }}
-  
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
