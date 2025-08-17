@@ -3,6 +3,7 @@
 */
 .entry {
   display: flex;
+  flex-direction: column; /*画像、テキストを縦並びに切り替え*/
   align-items: flex-start;
   gap: 5px;
   /* margin-bottom: 2rem; */
@@ -20,7 +21,7 @@
   display: grid;    /* もともとflex */
   grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
   gap: 2px 2px;    /* 画像間のスペース（横、縦） */
-  width: 40%;    /* 画像エリアの幅 */
+  width: 100%;    /* 画像エリアの幅 */
   margin: 3px;
   /* flex-wrap: wrap; */    /* 画像が多い場合は折り返す */
   border: 1px solid #ccc;
