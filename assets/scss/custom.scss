@@ -63,3 +63,17 @@
 .pswp__button--share {
   display: none !important;
 }
+
+/* 記事本文内の画像を grid で横並びにする */
+.entry-text p {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px; /* 余白 */
+}
+
+/* grid 内の画像を親幅にフィット */
+.entry-text p img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
