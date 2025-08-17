@@ -10,8 +10,10 @@
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := index $months $ym }}
-  {{ $monthPages = cond (isset $months $ym) $monthPages (slice) }}
+  {{ $monthPages := slice }}
+  {{ if isset $months $ym }}
+    {{ $monthPages = index $months $ym }}
+  {{ end }}
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
