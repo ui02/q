@@ -7,8 +7,7 @@
   align-items: flex-start;
   gap: 5px;
   /* margin-bottom: 2rem; */
-  /* padding: 10px;
-  margin-bottom: 20px; */
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
@@ -28,7 +27,7 @@
 }
 
 .entry-images img {
-  width: auto;
+  width: 90;
   height: auto;    /* 高さ自動で縦横比維持 */
   object-fit: cover;    /* 縦横比を崩さずトリミング */
   border-radius: 7px;    /* 高さ自動で縦横比維持 */
