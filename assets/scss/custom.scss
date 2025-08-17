@@ -6,48 +6,32 @@
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 2rem;
-}
-
-.entry-images {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2×2で最大4枚 */
-  gap: 0.5rem;
-  width: 40%; /* 画像エリアの幅 */
-}
-
-.entry-images img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
+  /* padding: 10px;
+  margin-bottom: 20px; */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 .entry-text {
   flex: 1;
 }
-
-/* ここから下old */
-.card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: #fff;
+.entry-images {
+  display: grid; /* もともとflex */
+  grid-template-columns: repeat(2, 1fr); /* 2×2で最大4枚 */
+  gap: 0.5rem;　/* もともと5px 画像間のスペース */
+  width: 40%; /* もともと5px 画像エリアの幅 */
+  /* margin-bottom: 10px;
+  flex-wrap: wrap; /* 画像が多い場合は折り返す */ */
 }
 
-.images {
-  display: flex;
-  flex-wrap: wrap; /* 画像が多い場合は折り返す */
-  gap: 5px;        /* 画像間のスペース */
-  margin-bottom: 10px;
-}
-
-.images img {
-  width: calc(25% - 5px); /* 最大4枚横並び */
+.entry-images img {
+  width: 100%;
   height: auto;            /* 高さ自動で縦横比維持 */
   object-fit: cover;  /* 縦横比を崩さずトリミング */
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  /* width: calc(25% - 5px); /* 最大4枚横並び */ */
 }
 
 @media (max-width: 600px) {
