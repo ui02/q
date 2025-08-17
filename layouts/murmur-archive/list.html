@@ -12,9 +12,9 @@
 
   <div class="entry">
     
-    <!-- 左側: 画像 (最大4枚) -->
+    <!-- 上側: 画像 (最大4枚) -->
     <div class="entry-images">
-    <div class="pswp-gallery"> <!-- ここを追加 -->
+    <!-- <div class="pswp-gallery"> フォトスワイプここを追加 -->
     {{/* 記事内バンドルの画像をすべて表示 */}}
   {{ range .Resources.Match "*" }}
   {{ if in .MediaType.Type "image" }}
@@ -30,10 +30,10 @@
     </a>
   {{ end }}
 {{ end }}
-    </div> <!-- /pswp-gallery ここまで -->
+    <!-- </div>  /pswp-gallery フォトスワイプここまで -->
     </div>
     
-  <!-- 右側: テキスト -->
+  <!-- 下側: テキスト -->
     <div class="entry-text">
       {{/* マークダウン本文をHTMLとして表示 */}}
       {{ .Content | safeHTML }}
