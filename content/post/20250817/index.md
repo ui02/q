@@ -31,6 +31,6 @@ weight: 1       # You can add weight to some posts to override the default sorti
 プチ旅行気分を味わえた1日でした。
 
 <!-- gallery start -->
-![](IMG_20250816_114031.jpg)  ![](IMG_20250816_095537.jpg)
-![](IMG_20250816_124103.jpg)  ![](IMG_20250816_124359.jpg)
+![](IMG_20250816_114031.jpg) ![](IMG_20250816_095537.jpg)  
+![](IMG_20250816_124103.jpg) ![](IMG_20250816_124359.jpg)
 <!-- gallery end -->
