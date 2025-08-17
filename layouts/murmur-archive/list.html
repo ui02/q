@@ -6,21 +6,7 @@
 {{ $allPages := where .Site.RegularPages "Type" "murmur-archive" }}
 {{ $allPages = $allPages.ByDate.Reverse }}
 
-{{/* 年-月でグループ化 */}}
-{{ $months := dict }}
-{{ range $allPages }}
-  {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := slice }}
-  
-  {{ if isset $months $ym }}
-    {{ $existing := index $months $ym }}
-    {{ $monthPages = slice }}　<!-- 初期化 -->
-    {{ range $existing }}　<!-- 既存ページがあれば順に追加 -->
-      {{ $monthPages = append $monthPages . }}
-    {{ end }}
-  {{ end }}
-  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
-{{ end }}
+{{ $months := $allPages | groupByDate "2006-01" }}
 
 {{/* 月ごとにページネーション */}}
 {{ range $ym, $pages := $months }}
