@@ -1,23 +1,48 @@
+{{/* layouts/murmur-archive/list.html */}}
 {{ define "main" }}
+
 <h1>{{ .Title }}</h1>
 
-{{/* すべての子ページを取得し、日付で降順ソート */}}
-{{ $allPages := sort .Pages "Date" "desc" }}
+{{ if eq .Kind "section" }}
+  {{/* 全体トップページ: 年→月でグループ化 + ページネーション */}}
+  {{ $allPages := .Pages.ByDate.Reverse }}
+  {{ $paginator := .Paginate $allPages 10 }} {{/* 1ページに10件ずつ */}}
 
-{{/* 月ごとにまとめる */}}
-{{ $currentMonth := "" }}
-{{ range $allPages }}
-  {{ $pageMonth := .Date.Format "2006-01" }}
-  {{ if ne $pageMonth $currentMonth }}
-    {{ if ne $currentMonth "" }}</ul>{{ end }}
-    <h2>{{ .Date.Format "2006年01月" }}</h2>
-    <ul>
-    {{ $currentMonth = $pageMonth }}
+  {{ range $year, $months := (dict) }}
+    {{/* 年月でグループ化する処理は省略、以下はページネーション用 */}}
   {{ end }}
-  <li>
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01/02" }}</time>:
-    {{ .Content }}
-  </li>
+
+  <ul>
+    {{ range $paginator.Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Date.Format "2006-01-02" }})
+      </li>
+    {{ end }}
+  </ul>
+
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}">« 前</a>
+    {{ end }}
+    {{ range $paginator.Pagers }}
+      {{ if eq . $paginator }}
+        <strong>{{ .PageNumber }}</strong>
+      {{ else }}
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      {{ end }}
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}">次 »</a>
+    {{ end }}
+  </nav>
+
+{{ else }}
+  {{/* 月別ページ: 単純リスト */}}
+  <ul>
+    {{ range .Pages.ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Date.Format "2006-01-02" }})</li>
+    {{ end }}
+  </ul>
 {{ end }}
-</ul>
+
 {{ end }}
