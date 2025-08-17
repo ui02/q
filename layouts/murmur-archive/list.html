@@ -2,9 +2,10 @@
 
 <h1>{{ .Title }}</h1>
 
-{{ $allPages := .Pages.ByDate.Reverse }}
+{{/* --- 1. murmur 配下のすべての通常ページ（サブディレクトリ含む）を取得 --- */}}
+{{ $allPages := .RegularPages.ByDate.Reverse }}
 
-{{/* 年-月でグループ化 */}}
+{{/* --- 2. 年-月でグループ化 --- */}}
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
@@ -13,24 +14,26 @@
   {{ $months = merge $months (dict $ym $monthPages) }}
 {{ end }}
 
-{{/* 月ごとにページネーション */}}
+{{/* --- 3. 月ごとにページネーション --- */}}
 {{ range $ym, $pages := $months }}
   <h2>{{ $ym }}</h2>
   {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
-      {{ with .Resources.Match "images/*" }}
-        {{ range . }}
+      <div class="images">
+        {{/* 1ページに複数画像がある場合はすべて表示 --- */}}
+        {{ range .Resources.Match "images/*" }}
           <img src="{{ .RelPermalink }}" alt="">
         {{ end }}
-      {{ end }}
+      </div>
       <div class="text">
-        <p>{{ .Content | safeHTML }}</p>
+        <p>{{ .Plain }}</p>
         <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
       </div>
     </div>
   {{ end }}
 
+  {{/* --- ページネーション --- */}}
   <div class="pagination">
     {{ if $paginator.HasPrev }}
       <a href="{{ $paginator.Prev.URL }}">Prev</a>
