@@ -10,7 +10,13 @@
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := index $months $ym | default (slice) }}
+  {{ $monthPages := slice }}  <!-- ← まず空の slice を作る -->
+  
+  {{ if isset $months $ym }}
+    {{ $existing := index $months $ym }}  <!-- 既存の値を取得 -->
+    {{ $monthPages = slice $existing... }} <!-- ← ここで必ず slice に変換 -->
+  {{ end }}
+  
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
