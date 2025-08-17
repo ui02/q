@@ -17,14 +17,16 @@
     {{/* 記事内バンドルの画像をすべて表示 */}}
   {{ range .Resources.Match "*" }}
   {{ if in .MediaType.Type "image" }}
-
     {{ $img := . }}
     {{ if (default true $.Site.Params.imageProcessing.cover.enabled) }}
       {{ $img = .Fill "120x120" }}
     {{ end }}
-
-    <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" loading="lazy">
-
+    
+    <a href="{{ .RelPermalink }}" 
+       data-pswp-width="{{ .Width }}" 
+       data-pswp-height="{{ .Height }}">
+      <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" loading="lazy">
+    </a>
   {{ end }}
 {{ end }}
 
