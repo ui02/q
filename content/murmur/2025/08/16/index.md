@@ -1,7 +1,7 @@
 ---
 title: "2025-08-16"
 date: 2025-08-16T04:49:04+00:00
-type: "post"          # ← これを post に揃えると post のテンプレートが使える
+type: "article"
 draft: false
 tags: 
 categories: 
