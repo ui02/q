@@ -17,28 +17,29 @@
   flex: 1;
 }
 .entry-images {
-  display: grid; /* もともとflex */
-  grid-template-columns: repeat(2, 1fr); /* 2×2で最大4枚 */
-  /* gap: 0.5rem; *//* もともと5px,画像間のスペース */
-  width: 40%; /* もともと5px,画像エリアの幅 */
+  display: grid;    /* もともとflex */
+  grid-template-columns: repeat(2, 1fr);    /* 2×2で最大4枚 */
+  /* gap: 0.5rem; */    /* もともと5px,画像間のスペース */
+  width: 40%;    /* もともと5px,画像エリアの幅 */
   /* margin: 3px;
-  flex-wrap: wrap; */ /* 画像が多い場合は折り返す */
+  flex-wrap: wrap; */    /* 画像が多い場合は折り返す */
 }
 
 .entry-images img {
   width: 100%;
-  height: auto;            /* 高さ自動で縦横比維持 */
-  object-fit: cover;  /* 縦横比を崩さずトリミング */
-  border-radius: 7px;
+  height: auto;    /* 高さ自動で縦横比維持 */
+  object-fit: cover;    /* 縦横比を崩さずトリミング */
+  border-radius: 7px;    /* 高さ自動で縦横比維持 */
   border: 0px solid #ccc;
-  margin: 3px;
-  padding: 1.5px
-  /* width: calc(25% - 5px); *//* 最大4枚横並び */
+  margin-top: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+  /* width: calc(25% - 5px); */    /* 最大4枚横並び */
 }
 
 @media (max-width: 600px) {
   .images img {
-    width: calc(50% - 5px); /* 画面が小さければ2列に */
+    width: calc(50% - 5px);    /* 画面が小さければ2列に */
   }
 }
 
