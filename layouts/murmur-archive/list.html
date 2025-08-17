@@ -1,6 +1,8 @@
 {{ define "main" }}
 
-{{ $allPages := where .Site.RegularPages "Section" "murmur" | sort "Date" "desc" }}
+{{/* murmur セクションのページのみ取得 */}}
+{{ $allPages := where .Site.RegularPages "Section" "murmur" }}
+{{ $allPages = where $allPages "Date" "ne" nil | sort "Date" "desc" }}
 
 {{/* 年-月ごとにグループ化 */}}
 {{ $months := dict }}
@@ -10,11 +12,22 @@
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
+{{/* 月リンク一覧 */}}
+<div class="month-links">
+  {{ range $ym, $_ := $months }}
+    <a href="#{{ $ym }}">{{ $ym }}</a>
+  {{ end }}
+</div>
+
+{{/* 月ごとにページネーション */}}
 {{ range $ym, $pages := $months }}
-  <h2>{{ $ym }}</h2>
-  {{ $paginator := $.Paginate $pages }}
+  <h2 id="{{ $ym }}">{{ $ym }}</h2>
+
+  {{ $paginator := $.Paginate $pages 10 }} {{/* 1ページに10件表示 */}}
+
   {{ range $paginator.Pages }}
     <div class="card">
+      {{/* 複数画像を一括表示 */}}
       {{ range .Resources.Match "images/*" }}
         <img src="{{ .RelPermalink }}" alt="">
       {{ end }}
@@ -25,6 +38,7 @@
     </div>
   {{ end }}
 
+  {{/* ページネーションリンク */}}
   <div class="pagination">
     {{ if $paginator.HasPrev }}
       <a href="{{ $paginator.Prev.URL }}">Prev</a>
