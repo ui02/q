@@ -15,10 +15,10 @@
 {{ end }}
 
 {{/* 月ごとにページネーション */}}
-{{ range $ym, $pages := $months }}
-  <h2>{{ $ym }}</h2>
+{{ range $month := $months }}
+  <h2>{{ $month.Key }}</h2> <!-- $month.Key が "YYYY-MM" になります -->
 
-  {{ $paginator := $.Paginate $pages }}
+  {{ $paginator := $.Paginate $month.Pages }}
   {{ range $paginator.Pages }}
     <div class="card">
 
