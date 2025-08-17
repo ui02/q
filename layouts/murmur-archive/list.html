@@ -6,29 +6,24 @@
 {{ $allPages := where .Site.RegularPages "Type" "murmur-archive" }}
 {{ $allPages = $allPages.ByDate.Reverse }}
 
-{{/* 年-月でグループ化 */}}
-{{ $months := $allPages | groupByDate "2006-01" }}
+{{/* 年-月でグループ化する部分を削除し、直接 $allPages をページネーションに渡す */}}
+{{/* 元の $months 周りの dict と append ロジックはすべて削除 */}}
 
-{{/* 月ごとにページネーション */}}
-{{ range $month := $months }}
-  <h2>{{ $month.Key }}</h2>
-
-  {{ $paginator := $.Paginate $month.Pages }}
-  {{ range $paginator.Pages }}
-    <div class="card">
-
-      {{/* 複数画像をすべて表示 */}}
-      {{ range .Resources.Match "images/*" }}
-        <img src="{{ .RelPermalink }}" alt="">
-      {{ end }}
-
-      <div class="text">
-        {{/* マークダウン本文をHTMLとして表示（ツイート文全文表示） */}}
-        {{ .Content | safeHTML }}
-        <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
-      </div>
+{{/* ページネーション */}}
+{{ $paginator := $.Paginate $allPages }}
+{{ range $paginator.Pages }}
+  <div class="card">
+    {{/* 複数画像をすべて表示 */}}
+    {{ range .Resources.Match "images/*" }}
+      <img src="{{ .RelPermalink }}" alt="">
+    {{ end }}
+    <div class="text">
+      {{/* マークダウン本文をHTMLとして表示（ツイート文全文表示） */}}
+      {{ .Content | safeHTML }}
+      <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
     </div>
-  {{ end }}
+  </div>
+{{ end }}
 
   <div class="pagination">
     {{ if $paginator.HasPrev }}
