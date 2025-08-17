@@ -1,45 +1,23 @@
 {{ define "main" }}
+<h1>{{ .Title }}</h1>
 
-{{ $allPages := where .Site.RegularPages "Section" "murmur" }}
-{{ $allPages = where $allPages "Date" "gt" now.AddDate -100 0 0 }} {{/* 日付が nil じゃないものだけ */}}
-{{ $allPages = sort $allPages "Date" "desc" }}
+{{/* すべての子ページを取得し、日付で降順ソート */}}
+{{ $allPages := sort .Pages "Date" "desc" }}
 
-{{ $months := dict }}
+{{/* 月ごとにまとめる */}}
+{{ $currentMonth := "" }}
 {{ range $allPages }}
-  {{ $ym := .Date.Format "2006-01" }}
-  {{ $monthPages := index $months $ym | default (slice) }}
-  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
-{{ end }}
-
-<div class="month-links">
-  {{ range $ym, $_ := $months }}
-    <a href="#{{ $ym }}">{{ $ym }}</a>
+  {{ $pageMonth := .Date.Format "2006-01" }}
+  {{ if ne $pageMonth $currentMonth }}
+    {{ if ne $currentMonth "" }}</ul>{{ end }}
+    <h2>{{ .Date.Format "2006年01月" }}</h2>
+    <ul>
+    {{ $currentMonth = $pageMonth }}
   {{ end }}
-</div>
-
-{{ range $ym, $pages := $months }}
-  <h2 id="{{ $ym }}">{{ $ym }}</h2>
-  {{ $paginator := $.Paginate $pages 10 }}
-  {{ range $paginator.Pages }}
-    <div class="card">
-      {{ range .Resources.Match "images/*" }}
-        <img src="{{ .RelPermalink }}" alt="">
-      {{ end }}
-      <div class="text">
-        <p>{{ .Plain }}</p>
-        <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
-      </div>
-    </div>
-  {{ end }}
-
-  <div class="pagination">
-    {{ if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL }}">Prev</a>
-    {{ end }}
-    {{ if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL }}">Next</a>
-    {{ end }}
-  </div>
+  <li>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01/02" }}</time>:
+    {{ .Content }}
+  </li>
 {{ end }}
-
+</ul>
 {{ end }}
