@@ -6,8 +6,8 @@
   flex-direction: column; /*画像、テキストを縦並びに切り替え*/
   align-items: flex-start;
   gap: 5px;
-  padding: 3px;
   /* margin-bottom: 2rem; */
+  padding: 3px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
@@ -17,7 +17,7 @@
   flex: 1;
 }
 .entry-images {
-  display: grid;
+  display: grid;    /* もともとflex */
   grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
   gap: 3px 3px;    /* 画像間のスペース（横、縦） */
   width: 100%;    /* 画像エリアの幅 */
@@ -51,7 +51,7 @@
 .entry-images .pswp-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 3px 3px;
+  gap: 8px;
 }
 
 .entry-images .pswp-gallery img {
