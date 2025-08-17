@@ -19,9 +19,10 @@
 .entry-images {
   display: grid;    /* もともとflex */
   grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
-  gap: 3px 3px;    /* 画像間のスペース（横、縦） */
+  /*gap: 3px 3px;*/    /* 画像間のスペース（横、縦） */
   width: 100%;    /* 画像エリアの幅 */
   margin: 3px;
+  padding: 3px;
   /* flex-wrap: wrap; */    /* 画像が多い場合は折り返す */
   border: 1px solid #ccc;
 }
