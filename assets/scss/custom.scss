@@ -16,7 +16,7 @@
   flex: 1;
 }
 .entry-images {
-  display: flex;    /* 画像を横並びに（もとはgrid） */
+  display: grid;
   grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
   gap: 3px 0px;    /* 画像間のスペース（横、縦） */
   width: 100%;    /* 画像エリアの幅 */
