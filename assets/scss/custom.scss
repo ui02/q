@@ -4,8 +4,8 @@
 .entry {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  /* margin-bottom: 2rem; */
   /* padding: 10px;
   margin-bottom: 20px; */
   border: 1px solid #ddd;
@@ -19,7 +19,7 @@
 .entry-images {
   display: grid; /* もともとflex */
   grid-template-columns: repeat(2, 1fr); /* 2×2で最大4枚 */
-  gap: 0.5rem; /* もともと5px,画像間のスペース */
+  /* gap: 0.5rem; *//* もともと5px,画像間のスペース */
   width: 40%; /* もともと5px,画像エリアの幅 */
   /* margin: 3px;
   flex-wrap: wrap; */ /* 画像が多い場合は折り返す */
@@ -31,6 +31,7 @@
   object-fit: cover;  /* 縦横比を崩さずトリミング */
   border-radius: 6px;
   border: 0px solid #ccc;
+  margin: 3px;
   /* width: calc(25% - 5px); *//* 最大4枚横並び */
 }
 
