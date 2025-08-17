@@ -19,7 +19,7 @@
   {{ if in .MediaType.Type "image" }}
     {{ $img := . }}
     {{ if (default true $.Site.Params.imageProcessing.cover.enabled) }}
-      {{ $img = .Fill "120x120" }}
+      {{ $img = .Fill "200x200" }}
     {{ end }}
     
     <a href="{{ .RelPermalink }}" 
