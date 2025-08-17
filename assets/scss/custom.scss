@@ -26,7 +26,7 @@
 }
 
 .entry-images img {
-  width: 35%;
+  width: 100%;
   height: auto;            /* 高さ自動で縦横比維持 */
   object-fit: cover;  /* 縦横比を崩さずトリミング */
   border-radius: 6px;
