@@ -4,7 +4,7 @@
 .entry {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 5px;
   /* margin-bottom: 2rem; */
   /* padding: 10px;
   margin-bottom: 20px; */
@@ -29,9 +29,10 @@
   width: 100%;
   height: auto;            /* 高さ自動で縦横比維持 */
   object-fit: cover;  /* 縦横比を崩さずトリミング */
-  border-radius: 6px;
+  border-radius: 7px;
   border: 0px solid #ccc;
   margin: 3px;
+  padding: 1.5px
   /* width: calc(25% - 5px); *//* 最大4枚横並び */
 }
 
