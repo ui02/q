@@ -1,6 +1,6 @@
 ---
 title: "2025-08-03"
-date: 2025-08-03T15:08:26+00:00
+date: 2025-08-03T15:08:26+09:00
 type: "murmur-archive"
 draft: false
 tags: 
