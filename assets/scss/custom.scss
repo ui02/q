@@ -19,7 +19,7 @@
 .entry-images {
   display: grid;    /* もともとflex */
   grid-template-columns: repeat(2, 1fr);    /* 2×2で最大4枚 */
-  gap: 5px; */    /* 画像間のスペース */
+  gap: 5px;    /* 画像間のスペース */
   width: 40%;    /* もともと5px,画像エリアの幅 */
   /* margin: 3px;
   flex-wrap: wrap; */    /* 画像が多い場合は折り返す */
