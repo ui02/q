@@ -21,7 +21,7 @@
   grid-template-columns: repeat(2, 1fr); /* 2×2で最大4枚 */
   gap: 0.5rem; /* もともと5px,画像間のスペース */
   width: 40%; /* もともと5px,画像エリアの幅 */
-  /* margin-bottom: 10px;
+  /* margin: 3px;
   flex-wrap: wrap; */ /* 画像が多い場合は折り返す */
 }
 
@@ -30,7 +30,7 @@
   height: auto;            /* 高さ自動で縦横比維持 */
   object-fit: cover;  /* 縦横比を崩さずトリミング */
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   /* width: calc(25% - 5px); *//* 最大4枚横並び */
 }
 
