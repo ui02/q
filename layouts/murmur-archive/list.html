@@ -12,6 +12,8 @@
   {{ $monthPages := index $months $ym }}
   {{ if not $monthPages }}
     {{ $monthPages = slice }}
+  {{ else if not (in (printf "%T" $monthPages) "[]*hugolib.pageState") }}
+    {{ $monthPages = slice $monthPages }}
   {{ end }}
   {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
