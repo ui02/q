@@ -31,7 +31,7 @@
   object-fit: cover;  /* 縦横比を崩さずトリミング */
   border-radius: 6px;
   border: 1px solid #ccc;
-  /* width: calc(25% - 5px); /* 最大4枚横並び */ */
+  /* width: calc(25% - 5px); *//* 最大4枚横並び */
 }
 
 @media (max-width: 600px) {
