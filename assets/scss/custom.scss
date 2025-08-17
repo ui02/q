@@ -46,3 +46,15 @@
     width: 100%;             /* さらに小さければ1列 */
   }
 }
+
+.entry-images .pswp-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.entry-images .pswp-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
