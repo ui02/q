@@ -14,6 +14,7 @@
     
     <!-- 左側: 画像 (最大4枚) -->
     <div class="entry-images">
+    <div class="pswp-gallery"> <!-- ここを追加 -->
     {{/* 記事内バンドルの画像をすべて表示 */}}
   {{ range .Resources.Match "*" }}
   {{ if in .MediaType.Type "image" }}
@@ -29,7 +30,7 @@
     </a>
   {{ end }}
 {{ end }}
-
+    </div> <!-- /pswp-gallery ここまで -->
     </div>
     
   <!-- 右側: テキスト -->
