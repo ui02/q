@@ -1,7 +1,7 @@
 ---
 title: "2025-08-16"
 date: 2025-08-16T04:49:04+00:00
-type: "partials"
+type: 
 draft: false
 tags: 
 categories: 
