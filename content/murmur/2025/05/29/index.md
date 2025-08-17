@@ -1,9 +1,11 @@
 ---
 title: "2025-05-29"
-date: 2025-05-29T14:12:25+00:00
+date: 2025-05-29T14:12:25+09:00
+type: murmur-archive
 draft: false
+tags: 
+categories: 
 ---
-
 
 @tiruramu それ😂撫で要求が厳しいです‥
 
