@@ -3,7 +3,7 @@ title: "うみ"
 description: 
 slug: 20250817
 date: 2025-08-17
-image: IMG_20250810_142904.jpg
+image: IMG_20250816_095537.jpg
 categories:
     - Dailylife
 tags:
