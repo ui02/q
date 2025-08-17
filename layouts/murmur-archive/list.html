@@ -14,7 +14,7 @@
 {{ range $paginator.Pages }}
   <div class="card">
     {{/* 複数画像をすべて表示 */}}
-    {{ range .Resources.Match "*" }}
+    {{ range .Resources.ByType "image" }}
       <img src="{{ .RelPermalink }}" alt="">
     {{ end }}
     <div class="text">
