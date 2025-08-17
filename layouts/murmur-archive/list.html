@@ -1,31 +1,23 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
+{{ $allPages := where .Site.RegularPages "Section" "murmur" | sort "Date" "desc" }}
 
-{{/* --- 1. murmur 配下のすべての通常ページ（サブディレクトリ含む）を取得 --- */}}
-{{ $allPages := .RegularPages.ByDate.Reverse }}
-
-{{/* --- 2. 年-月でグループ化 --- */}}
+{{/* 年-月ごとにグループ化 */}}
 {{ $months := dict }}
 {{ range $allPages }}
   {{ $ym := .Date.Format "2006-01" }}
   {{ $monthPages := index $months $ym | default (slice) }}
-  {{ $monthPages = $monthPages | append . }}
-  {{ $months = merge $months (dict $ym $monthPages) }}
+  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
 {{ end }}
 
-{{/* --- 3. 月ごとにページネーション --- */}}
 {{ range $ym, $pages := $months }}
   <h2>{{ $ym }}</h2>
   {{ $paginator := $.Paginate $pages }}
   {{ range $paginator.Pages }}
     <div class="card">
-      <div class="images">
-        {{/* 1ページに複数画像がある場合はすべて表示 --- */}}
-        {{ range .Resources.Match "images/*" }}
-          <img src="{{ .RelPermalink }}" alt="">
-        {{ end }}
-      </div>
+      {{ range .Resources.Match "images/*" }}
+        <img src="{{ .RelPermalink }}" alt="">
+      {{ end }}
       <div class="text">
         <p>{{ .Plain }}</p>
         <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
@@ -33,7 +25,6 @@
     </div>
   {{ end }}
 
-  {{/* --- ページネーション --- */}}
   <div class="pagination">
     {{ if $paginator.HasPrev }}
       <a href="{{ $paginator.Prev.URL }}">Prev</a>
