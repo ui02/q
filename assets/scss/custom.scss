@@ -16,47 +16,41 @@
 .entry-text {
   flex: 1;
 }
+
+/* 左側: 画像エリア */
 .entry-images {
-  display: grid;    /* もともとflex */
-  grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
-  gap: 3px 3px;    /* 画像間のスペース（横、縦） */
-  width: 100%;    /* 画像エリアの幅 */
+  /* 親コンテナは block でOK */
+  width: 100%;
   margin: 0px;
   padding: 3px;
-  flex-wrap: wrap;    /* 画像が多い場合は折り返す */
 }
 
-.entry-images img {
-  width: 100%;
-  height: auto;    /* 高さ自動で縦横比維持 */
-  object-fit: cover;    /* 縦横比を崩さずトリミング */
-  border-radius: 7px;    /* 高さ自動で縦横比維持 */
-  border: 0px solid #ccc;
-  /* width: calc(25% - 5px); */    /* 最大4枚横並び */
-}
-
-@media (max-width: 600px) {
-  .images img {
-    width: calc(50% - 5px);    /* 画面が小さければ2列に */
-  }
-}
-
-@media (max-width: 400px) {
-  .images img {
-    width: 100%;             /* さらに小さければ1列 */
-  }
-}
-
+/* PhotoSwipe ギャラリー */
 .entry-images .pswp-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
   gap: 8px;
 }
 
 .entry-images .pswp-gallery img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;    /* 縦横比を崩さずトリミング */
+  border-radius: 7px;
+  border: 0px solid #ccc;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .entry-images .pswp-gallery {
+    grid-template-columns: repeat(2, 1fr);  /* 小さい画面は2列 */
+  }
+}
+
+@media (max-width: 400px) {
+  .entry-images .pswp-gallery {
+    grid-template-columns: 1fr;             /* さらに小さい画面は1列 */
+  }
 }
 
 /* PhotoSwipe のシェアボタンを非表示 */
@@ -64,16 +58,27 @@
   display: none !important;
 }
 
-/* 記事本文内の画像を grid で横並びにする */
-.entry-text p {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px; /* 余白 */
+/* 記事本文の画像だけまとめてグリッド化 */
+.article-content p:has(img) {
+  display: inline-block; /* p のデフォルトの block を解除 */
+  margin: 0;             /* 余白リセット */
 }
 
-/* grid 内の画像を親幅にフィット */
-.entry-text p img {
+.article-content p:has(img) img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
+}
+
+/* ギャラリー範囲をグリッド化（連続する4枚ごとに横並び） */
+.article-content p:has(img):nth-child(4n+1) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+/* 上の書き方が面倒ならギャラリー全体を対象にする */
+.article-content p:has(img) {
+  display: inline-block;
+  margin: 0;
 }
