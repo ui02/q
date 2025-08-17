@@ -1,48 +1,49 @@
-{{/* layouts/murmur-archive/list.html */}}
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
 
-{{ if eq .Kind "section" }}
-  {{/* 全体トップページ: 年→月でグループ化 + ページネーション */}}
-  {{ $allPages := .Pages.ByDate.Reverse }}
-  {{ $paginator := .Paginate $allPages 10 }} {{/* 1ページに10件ずつ */}}
+{{/* murmur-archive のすべてのページを取得して日付順にソート */}}
+{{ $allPages := where .Site.RegularPages "Type" "murmur-archive" }}
+{{ $allPages = $allPages.ByDate.Reverse }}
 
-  {{ range $year, $months := (dict) }}
-    {{/* 年月でグループ化する処理は省略、以下はページネーション用 */}}
+{{/* 年-月でグループ化 */}}
+{{ $months := dict }}
+{{ range $allPages }}
+  {{ $ym := .Date.Format "2006-01" }}
+  {{ $monthPages := index $months $ym }}
+  {{ $monthPages = cond (isset $months $ym) $monthPages (slice) }}
+  {{ $months = merge $months (dict $ym (append $monthPages .)) }}
+{{ end }}
+
+{{/* 月ごとにページネーション */}}
+{{ range $ym, $pages := $months }}
+  <h2>{{ $ym }}</h2>
+
+  {{ $paginator := $.Paginate $pages }}
+  {{ range $paginator.Pages }}
+    <div class="card">
+
+      {{/* 複数画像をすべて表示 */}}
+      {{ range .Resources.Match "images/*" }}
+        <img src="{{ .RelPermalink }}" alt="">
+      {{ end }}
+
+      <div class="text">
+        {{/* マークダウン本文をHTMLとして表示（ツイート文全文表示） */}}
+        {{ .Content | safeHTML }}
+        <small>{{ .Date.Format "2006/01/02 15:04" }}</small>
+      </div>
+    </div>
   {{ end }}
 
-  <ul>
-    {{ range $paginator.Pages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Date.Format "2006-01-02" }})
-      </li>
-    {{ end }}
-  </ul>
-
-  <nav class="pagination">
+  <div class="pagination">
     {{ if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL }}">« 前</a>
-    {{ end }}
-    {{ range $paginator.Pagers }}
-      {{ if eq . $paginator }}
-        <strong>{{ .PageNumber }}</strong>
-      {{ else }}
-        <a href="{{ .URL }}">{{ .PageNumber }}</a>
-      {{ end }}
+      <a href="{{ $paginator.Prev.URL }}">Prev</a>
     {{ end }}
     {{ if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL }}">次 »</a>
+      <a href="{{ $paginator.Next.URL }}">Next</a>
     {{ end }}
-  </nav>
-
-{{ else }}
-  {{/* 月別ページ: 単純リスト */}}
-  <ul>
-    {{ range .Pages.ByDate.Reverse }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Date.Format "2006-01-02" }})</li>
-    {{ end }}
-  </ul>
+  </div>
 {{ end }}
 
 {{ end }}
