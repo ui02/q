@@ -7,7 +7,6 @@
   align-items: flex-start;
   gap: 5px;
   /* margin-bottom: 2rem; */
-  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
@@ -17,18 +16,19 @@
   flex: 1;
 }
 .entry-images {
-  display: grid;    /* もともとflex */
+  display: flex;    /* 画像を横並びに（もとはgrid） */
   grid-template-columns: repeat(4, 1fr);    /* 横4枚 */
   gap: 3px 0px;    /* 画像間のスペース（横、縦） */
   width: 100%;    /* 画像エリアの幅 */
   margin: 0px;
   padding: 0px;
-  /* flex-wrap: wrap; */    /* 画像が多い場合は折り返す */
+  flex-wrap: wrap;    /* 画像が多い場合は折り返す */
   border: 1px solid #ccc;
 }
 
 .entry-images img {
-  width: 95%;
+  display: block;
+  width: 200px;
   height: auto;    /* 高さ自動で縦横比維持 */
   object-fit: cover;    /* 縦横比を崩さずトリミング */
   border-radius: 7px;    /* 高さ自動で縦横比維持 */
