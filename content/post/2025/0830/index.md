@@ -3,7 +3,7 @@ title: "SJ"
 description: 
 slug: 20250830
 date: 2025-08-30
-image: IMG_20250816_095537.jpg
+image: IMG_20250830_072719.jpg
 categories:
     - Dailylife
 tags:
