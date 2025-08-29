@@ -51,6 +51,9 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 ので、ちょっと今からやってくるわ～
 
+<!-- gallery start -->
+![](IMG_20250830_072201.jpg)
+<!-- gallery end -->
 
 
 
